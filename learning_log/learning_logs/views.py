@@ -48,7 +48,7 @@ def new_topic(request):
             new_topic = form.save(commit=False)
             new_topic.owner = request.user
             new_topic.save()
-            return redirect('learning_log:topics')
+            return redirect('learning_logs:topics')
 
     # Display a blank or invalid form.
     context = {'form': form}
@@ -60,7 +60,7 @@ def new_entry(request, topic_id):
     """Add a new entry for a particular topic."""
     topic = Topic.objects.get(id=topic_id)
 
-    if request.method != 'post':
+    if request.method !='POST':
         # No data submitted; create a blank form.
         form = EntryForm()
     else:
